@@ -1,8 +1,9 @@
-name: ""
-type: terraform
-description: ""
+name: gitops-cp-odm
+type: gitops
+description: Module to populate a gitops repo wih the resources to provision IBM ODM
 tags:
-  - tools
+  - odm
+  - cloudpak
   - gitops
 versions:
   - platforms:
