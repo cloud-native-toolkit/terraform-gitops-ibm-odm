@@ -1,0 +1,9 @@
+id: github.com/cloud-native-toolkit/terraform-gitops-cp-odm
+name: gitops-cp-odm
+type: gitops
+description: Module to populate a gitops repo wih the resources to provision IBM ODM
+tags:
+  - odm
+  - cloudpak
+  - gitops
+versions: []
