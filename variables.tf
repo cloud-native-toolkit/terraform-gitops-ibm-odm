@@ -79,7 +79,7 @@ variable "cluster_type" {
   default     = "ocp4"
 }
 
-variable "tls_secret_name" {
+/*variable "tls_secret_name" {
   type        = string
   description = "The name of the secret containing the tls certificate values"
   default     = ""
@@ -89,7 +89,7 @@ variable "kubeseal_cert" {
   type        = string
   description = "The certificate/public key used to encrypt the sealed secrets"
   default     = ""
-}
+}*/
 
 variable "server_name" {
   type        = string
