@@ -1,4 +1,4 @@
-name: ibm-odm-dev
+name: gitops-cp-odm
 type: gitops
 description: Module to populate a gitops repo wih the resources to provision IBM ODM
 tags:
