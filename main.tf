@@ -5,11 +5,23 @@ locals {
   ingress_host  = "${local.name}-${var.namespace}.${var.cluster_ingress_hostname}"
   ingress_url   = "https://${local.ingress_host}"
   service_url   = "http://${local.name}.${var.namespace}"
+  serviceAccountName                = "ibm-odm-dev"
   values_content = {
   }
   layer = "services"
   application_branch = "main"
   layer_config = var.gitops_config[local.layer]
+}
+
+module "service_account" {
+  source = "github.com/cloud-native-toolkit/terraform-gitops-service-account.git"
+
+  gitops_config = var.gitops_config
+  git_credentials = var.git_credentials
+  namespace = var.namespace
+  name = local.serviceAccountName
+  sccs = ["anyuid", "privileged"]
+  server_name = var.server_name
 }
 
 module setup_clis {
