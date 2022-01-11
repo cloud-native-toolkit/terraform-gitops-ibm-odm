@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: ibm-odm-dev
 #appVersion: 8.11.0.0
 description: A Helm chart for Kubernetes. IBM Operational Decision Manager for Developers
