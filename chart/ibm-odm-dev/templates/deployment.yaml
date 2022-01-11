@@ -29,7 +29,7 @@ spec:
       annotations:
         productName: {{ .Chart.Description | quote }}
         productID: "7b1b6b93868c4468abbe83421c00f667"
-        productVersion: {{ .Chart.AppVersion }}
+        productVersion: {{ .Chart.AppVersion | quote }}
         productMetric: "FREE"
     spec:
 {{ include "odm-serviceAccountName" . | indent 6 }}
