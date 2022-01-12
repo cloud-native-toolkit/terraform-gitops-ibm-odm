@@ -1,0 +1,102 @@
+# © Copyright IBM Corporation 2020
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# License must be set to "accept" to accept the terms of the IBM license
+license: "accept"
+
+# User password is required. 
+# Set the password for odm default users.
+usersPassword: ""
+
+# Default values for ibm-odm-dev.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+image:
+  repository: icr.io/odm-k8s
+  tag: 8.11.0.0
+  pullPolicy: IfNotPresent
+## Optionally specify an array of imagePullSecrets.
+## Secrets must be manually created in the namespace.
+## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+##  - name: admin.registrykey
+  pullSecrets:
+## Architecture
+## You can use kubectl version command to determine the architecture on the
+## desired worker node.
+## Only amd64 is supported for ibm-odm-dev.
+  arch: "amd64"
+
+serviceAccountName: ""
+
+service:
+  # If on Openshift the enableRoute value will be overridden to true
+  enableRoute: false
+  hostname: ""
+  # If enableRoute is set to true the type value will be overridden to ClusterIP
+  type: NodePort
+
+resources:
+  requests:
+    cpu: 1
+    memory: 1024Mi
+    ephemeral-storage: 50Mi
+  limits:
+    cpu: 2
+    memory: 2048Mi
+    ephemeral-storage: 100Mi
+
+decisionCenter:
+  persistenceLocale: en_US
+
+internalDatabase:
+  populateSampleData: true
+  persistence:
+    enabled: false
+    useDynamicProvisioning: false
+    storageClassName: ""
+    resources:
+      requests:
+        storage: 2Gi
+
+externalDatabase:
+  serverName: ""
+  databaseName: ""
+  user: ""
+  password: ""
+  port: 5432
+
+
+readinessProbe:
+  initialDelaySeconds: 10
+  periodSeconds: 5
+  failureThreshold: 45
+
+livenessProbe:
+  initialDelaySeconds: 300
+  periodSeconds: 10
+  failureThreshold: 10
+
+customization:
+  baiEmitterSecretRef:
+  # If on Openshift the runAsUSer value will be overridden to empty
+  # as per restricted scc requirements
+  runAsUser:
+  authSecretRef:
+
+networkPolicy:
+  # Enable creation of NetworkPolicy resources.
+  enabled: true
+  # For Kubernetes v1.4, v1.5 and v1.6, use 'extensions/v1beta1'
+  # For Kubernetes v1.7, use 'networking.k8s.io/v1'
+  apiVersion: networking.k8s.io/v1

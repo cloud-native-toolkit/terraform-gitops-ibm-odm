@@ -1,0 +1,15 @@
+apiVersion: v2
+name: ibm-odm-dev
+#appVersion: 8.11.0.0
+description: A Helm chart for Kubernetes. IBM Operational Decision Manager for Developers
+type: application
+version: 21.3.0
+appVersion: "1.0"
+
+dependencies:
+- name: service-account
+  version: 0.6.0
+  repository: https://charts.cloudnativetoolkit.dev
+
+
+

@@ -10,7 +10,7 @@ SERVER_NAME="default"
 TYPE="base"
 LAYER="2-services"
 
-COMPONENT_NAME="my-module"
+COMPONENT_NAME="ibm-odm-dev"
 
 mkdir -p .testrepo
 
@@ -51,7 +51,7 @@ else
   sleep 30
 fi
 
-DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
+DEPLOYMENT="${NAMESPACE}-${COMPONENT_NAME}-${COMPONENT_NAME}"
 count=0
 until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
   echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
