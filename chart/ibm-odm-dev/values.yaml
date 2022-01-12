@@ -91,7 +91,7 @@ customization:
   baiEmitterSecretRef:
   # If on Openshift the runAsUSer value will be overridden to empty
   # as per restricted scc requirements
-  runAsUser: 1001
+  runAsUser:
   authSecretRef:
 
 networkPolicy:
